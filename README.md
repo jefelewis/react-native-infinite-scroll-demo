@@ -1,4 +1,4 @@
-# Boilerplate: React Native Starter (Auth)
+# Boilerplate: React Native Infinite Scroll
 *  [Built With](#built-with)
 *  [Pending Items](#pending-items)
 *  [Color Scheme](#color-scheme)
