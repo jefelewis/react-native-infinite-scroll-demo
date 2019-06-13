@@ -8,3 +8,8 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+
+config/
+config/*
+config/config
+config/serviceAccount
