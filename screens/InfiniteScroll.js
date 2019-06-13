@@ -1,6 +1,6 @@
 // Imports: Dependencies
 import React, { Component } from "react";
-import { Dimensions, FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 import firebaseConfig from '../config/config';
@@ -22,31 +22,84 @@ export default class InfiniteScroll extends React.Component {
       data: [],
       limit: 3,
       lastVisible: null,
+      visibles: null,
 
       loading: false,
       refreshing: false,
     };
   }
 
-  // Retrieve Data
-  retrieveData = async () => {
+  // Component Will Mount (Initial Query????????)
+  componentWillMount = () => {
     try {
+      console.log('Retrieving Data');
+
       // Set State: Loading
       this.setState({ loading: true });
 
+      // Cloud Firestore: Query
+      let initialQuery = database.collection('users')
+        // .where('first_name', '==', `${this.props.item_name}`)
+        .orderBy('first_name')
+        // .limit(this.state.limit)
+        .limit(3)
 
-      console.log(`Selected Agency: ${this.props.selectedAgency}`);
-      console.log(`Selected License Type: ${this.props.selectedLicenseType}`);
+      // Cloud Firestore: Query Snapshot
+      let documentSnapshots = initialQuery.get();
+      // console.log(`Document Snapshot: ${documentSnapshots.exists()}`)
 
+      // Cloud Firestore: Document Data
+      let documentData = documentSnapshots.docs.map(document => document.data());
+      // console.log('Document Data');
+      // console.log(documentData);
+
+      // Cloud Firestore: Last Visible Document (To Start From For Proceeding Queries)
+      let lastVisible = documentData[documentData.length - 1];
+      console.log('Last Visible');
+      console.log(typeof lastVisible);
+      console.log(lastVisible);
+
+      // Set State
+      this.setState({
+        data: documentData,
+        lastVisible: lastVisible,
+        visibles: [...this.state.visibles, lastVisible],
+        loading: false,
+        refreshing: false,
+      });
+
+
+
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+
+
+  // Component Did Update
+  // componentDidUpdate(prevProps, prevState) {
+  //   const isDifferentPage = this.state.currentPage !== prevState.currentPage
+  //   if (isDifferentPage) this.getItems()
+  // }
+
+  // Retrieve Data
+  retrieveData = async () => {
+    try {
+      console.log('Retrieving Data');
+
+      // Set State: Loading
+      this.setState({ loading: true });
 
       // Cloud Firestore: Query
-      console.log('Fetching Inspectors')
-      let initialQuery = await database.collection('licenses')
-                            .where('agency', '==', `${this.props.selectedAgency}`)
-                            .where('license_type', '==', `${this.props.selectedLicenseType}`)
-                            .orderBy('first_name')
-                            // .limit(this.state.limit)
-                            .limit(10)
+      let initialQuery = await database.collection('users')
+        // .where('first_name', '==', `${this.props.item_name}`)
+        .orderBy('first_name')
+        // .limit(this.state.limit)
+        .limit(3)
 
       // Cloud Firestore: Query Snapshot
       let documentSnapshots = await initialQuery.get();
@@ -164,13 +217,15 @@ export default class InfiniteScroll extends React.Component {
           onEndReachedThreshold={0}
         /> */}
 
-        <ItemSelector title="Fuck" />
+        <Text>Hi</Text>
+
+        {/* <ItemSelector title="Fuck" />
         <ItemSelector title="This" />
         <ItemSelector title="Shit" />
         <ItemSelector title="Think" />
         <ItemSelector title="About" />
         <ItemSelector title="The" />
-        <ItemSelector title="Money" />
+        <ItemSelector title="Money" /> */}
       </SafeAreaView>
     )
   }
@@ -180,8 +235,10 @@ export default class InfiniteScroll extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    height: height,
+    width: width,
   },
   text: {
     fontFamily: 'System',
