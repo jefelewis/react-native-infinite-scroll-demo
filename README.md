@@ -21,12 +21,7 @@
 * Light Grey: #E5E5E5
 
 ## Screens
-<div align="center">
-  <br />
-  <img src="/assets/screenshots/Home.png" width="40%"</img>
-  <br />
-  <img src="/assets/screenshots/Profile.png" width="40%"</img>
-</div>
+
 
 ## Getting Started
 **1. Connect Firebase:**
