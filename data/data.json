@@ -2,103 +2,103 @@
   "users": [
     {
       "id": "1",
-      "firstName": "Kristin",
-      "lastName": "Smith"
+      "first_name": "Kristin",
+      "last_name": "Smith"
     },
     {
       "id": "2",
-      "firstName": "Olivia",
-      "lastName": "Parker"
+      "first_name": "Olivia",
+      "last_name": "Parker"
     },
     {
       "id": "3",
-      "firstName": "Jimmy",
-      "lastName": "Robinson"
+      "first_name": "Jimmy",
+      "last_name": "Robinson"
     },
     {
       "id": "4",
-      "firstName": "Zack",
-      "lastName": "Carter"
+      "first_name": "Zack",
+      "last_name": "Carter"
     },
     {
       "id": "5",
-      "firstName": "Brad",
-      "lastName": "Rayburn"
+      "first_name": "Brad",
+      "last_name": "Rayburn"
     },
     {
       "id": "6",
-      "firstName": "Ashley",
-      "lastName": "Foster"
+      "first_name": "Ashley",
+      "last_name": "Foster"
     },
     {
       "id": "7",
-      "firstName": "Parker",
-      "lastName": "Trotter"
+      "first_name": "Parker",
+      "last_name": "Trotter"
     },
     {
       "id": "8",
-      "firstName": "Kevin",
-      "lastName": "Carter"
+      "first_name": "Kevin",
+      "last_name": "Carter"
     },
     {
       "id": "9",
-      "firstName": "Zack",
-      "lastName": "Klein"
+      "first_name": "Zack",
+      "last_name": "Klein"
     },
     {
       "id": "10",
-      "firstName": "Thomas",
-      "lastName": "Manchin"
+      "first_name": "Thomas",
+      "last_name": "Manchin"
     },
     {
       "id": "11",
-      "firstName": "Taylor",
-      "lastName": "Welch"
+      "first_name": "Taylor",
+      "last_name": "Welch"
     },
     {
       "id": "12",
-      "firstName": "Sam",
-      "lastName": "Goldberg"
+      "first_name": "Sam",
+      "last_name": "Goldberg"
     },
     {
       "id": "13",
-      "firstName": "John",
-      "lastName": "Russell"
+      "first_name": "John",
+      "last_name": "Russell"
     },
     {
       "id": "14",
-      "firstName": "Steve",
-      "lastName": "Bell"
+      "first_name": "Steve",
+      "last_name": "Bell"
     },
     {
       "id": "15",
-      "firstName": "Kelly",
-      "lastName": "Black"
+      "first_name": "Kelly",
+      "last_name": "Black"
     },
     {
       "id": "16",
-      "firstName": "Lena",
-      "lastName": "Hunt"
+      "first_name": "Lena",
+      "last_name": "Hunt"
     },
     {
       "id": "17",
-      "firstName": "Jessica",
-      "lastName": "Moore"
+      "first_name": "Jessica",
+      "last_name": "Moore"
     },
     {
       "id": "18",
-      "firstName": "Pete",
-      "lastName": "Wong"
+      "first_name": "Pete",
+      "last_name": "Wong"
     },
     {
       "id": "19",
-      "firstName": "Harry",
-      "lastName": "Fordham"
+      "first_name": "Harry",
+      "last_name": "Fordham"
     },
     {
       "id": "20",
-      "firstName": "Ashley",
-      "lastName": "Blake"
+      "first_name": "Ashley",
+      "last_name": "Blake"
     }
   ]
 }
