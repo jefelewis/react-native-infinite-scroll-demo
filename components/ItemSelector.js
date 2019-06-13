@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
     borderTopWidth: .2,
   },
   arrowForward: {
-    color: 'black',
-    opacity: .3,
+    color: '#D4D4D2',
+    opacity: .8,
     position: 'absolute',
     right: 20,
   },
