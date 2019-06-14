@@ -72,36 +72,29 @@ export default class InfiniteScroll extends React.Component {
       // Cloud Firestore: Last Visible Document (To Start From For Proceeding Queries)
       let lastVisible = documentData[documentData.length - 1];
       console.log('Last Visible');
-      console.log(typeof lastVisible);
       console.log(lastVisible);
 
       // Set State
       this.setState({
         data: documentData,
         lastVisible: lastVisible,
-        visibles: [...this.state.visibles, lastVisible],
+        // visibles: [...this.state.visibles, lastVisible],
         loading: false,
         refreshing: false,
-      });
+      });      
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
 
-      console.log('Last Visible');
-      console.log(this.state.visibles);
-      // console.log(typeof this.state.lastVisible);
-      // console.log(this.state.lastVisible);
-      // console.log(this.state.visibles[this.state.visibles.length - 1]);
+  // Retrieve More
+  retrieveMore = async () => {
+    try {
+      console.log('Retrieving additional Data');
 
-      console.log('FUCK');
-      console.log('FUCK');
-
-      console.log(`Limit (Initial): ${this.state.limit}`)
-      // Update Limit?
-      this.setState({
-        limit: this.state.limit + this.state.limit,
-      })
-
-      console.log(`Limit (Initial & Updated): ${this.state.limit}`)
-      
-      // this.setState({ loading: false });
+      // Set State: Refreshing
+      this.setState({ refreshing: true });
     }
     catch (error) {
       console.log(error);
@@ -143,7 +136,7 @@ export default class InfiniteScroll extends React.Component {
   // Select Item
   selectItem = (item) => {
     try {
-      console.log(`Selected: ${item.item_name}`)
+      console.log(`Selected: ${item.first_name}`)
     }
     catch(error) {
       console.log(error);
@@ -153,27 +146,33 @@ export default class InfiniteScroll extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        {/* <FlatList
+        <FlatList
+          // Data takes in an array
           data={this.state.data}
+          // Render Items
           renderItem={({ item }) => (
             <ItemSelector
-              item={item.item_name}
+              item={item.first_name}
               onPress={() => {this.selectItem(item)}}
             />
           )}
+          // Element Key
           keyExtractor={(item, index) => String(index)}
+          // Header (Title)
           ListHeaderComponent={this.renderHeader}
+          // Footer (Activity Indicator)
           ListFooterComponent={this.renderFooter}
-          // onEndReached={()=> this.retrieveMore}
+          // On End Reached takes in a function
           onEndReached={() => {
             if (this.state.loading === false) {
               // this.retrieveMore();
               // Change Back And Uncomment the Following Line!!!!
               this.retrieveData();
             }
-          }}          
+          }}
+          // How Close To The End Of List Until Next Data Request Is Made
           onEndReachedThreshold={0}
-        /> */}
+        />
 
         <Text>Hi</Text>
 
