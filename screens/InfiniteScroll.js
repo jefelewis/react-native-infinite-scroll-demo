@@ -20,7 +20,7 @@ export default class InfiniteScroll extends React.Component {
 
     this.state = {
       data: [null],
-      limit: 3,
+      limit: 9,
       lastVisible: null,
       visibles: null,
 
@@ -43,11 +43,14 @@ export default class InfiniteScroll extends React.Component {
   // Component Did Update
   componentDidUpdate(prevProps, prevState) {
     try {
-
-    }
-    catch (error) {
       console.log('Component Updating: Previous State');
       console.log(prevState);
+
+      console.log('Component Updating: Previous Props');
+      console.log(prevProps);
+    }
+    catch (error) {
+      console.log(error);
     }
   }
 
@@ -63,8 +66,8 @@ export default class InfiniteScroll extends React.Component {
       let initialQuery = await database.collection('users')
         .where('id', '<=', '20')
         .orderBy('id')
-        // .limit(this.state.limit)
-        .limit(3)
+        .limit(this.state.limit)
+        // .limit(3)
 
       // Cloud Firestore: Query Snapshot
       let documentSnapshots = await initialQuery.get();
@@ -118,9 +121,9 @@ export default class InfiniteScroll extends React.Component {
       let additionalQuery = await database.collection('users')
         .where('id', '<=', '20')
         .orderBy('id')
-        // .limit(this.state.limit)
         .startAt(this.state.lastVisible)
-        .limit(3)
+        .limit(this.state.limit)
+        // .limit(3)
 
       // Cloud Firestore: Query Snapshot
       let documentSnapshots = await additionalQuery.get();
@@ -165,7 +168,8 @@ export default class InfiniteScroll extends React.Component {
   renderFooter = () => {
     try {
       // Check If Loading
-      if (this.state.loading || this.state.refreshing) {
+      // if (this.state.loading || this.state.refreshing) {
+      if (this.state.loading) {
         return (
           <View style={styles.activityIndicator}>
             <ActivityIndicator />
