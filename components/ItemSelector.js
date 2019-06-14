@@ -17,7 +17,7 @@ export default class ItemSelector extends Component {
       <TouchableOpacity onPress={this.props.onPress}>
         <View style={styles.container}>
           <Icon name="ios-arrow-forward" size={22} style={styles.arrowForward}/>
-          <Text style={styles.titleText}>{this.props.title}</Text>
+          <Text style={styles.titleText}>{this.props.item}</Text>
         </View>
     </TouchableOpacity>
     )
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: width,
-    height: 70,
+    height: 80,
     backgroundColor: '#fff',
     borderColor: '#D4D4D2',
     borderTopWidth: .2,

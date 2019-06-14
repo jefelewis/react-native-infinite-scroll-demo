@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: 16,
     marginRight: 16,
-    marginTop: 45,
-    marginBottom: 7,
+    marginTop: 60,
+    marginBottom: 12,
     alignItems: 'flex-end',
   },
   filterTitle: {
