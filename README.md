@@ -11,7 +11,7 @@
 * [Expo](https://expo.io) - React Native Toolchain
 * [React Navigation 3](https://reactnavigation.org) - Routing/Navigation
 * [React Redux](https://react-redux.js.org) - State Management
-* [Firebase](https://firebase.google.com) - Authentication
+* [Firebase](https://firebase.google.com) - Database
 
 ## Pending Items
 
@@ -43,7 +43,27 @@ const firebaseConfig = {
 module.exports = firebaseConfig;
 ```
 
-**2. Enable Firebase Cloud Firestore:**
+**2. Add .gitignore:**
+```
+node_modules
+node_modules/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+web-report/
+
+config
+config/*
+config/config
+config/serviceAccount
+```
+
+**3. Enable Firebase Cloud Firestore:**
 1. Navigate to "Database" on the left sidebar
 
 2. Click on "Create Database"
@@ -52,12 +72,12 @@ module.exports = firebaseConfig;
 
 4. Click on "Enable"
 
-**3. Install Dependencies:**
+**4. Install Dependencies:**
 ```
 npm install
 ```
 
-**4. Start iOS Simulator:**
+**5. Start iOS Simulator:**
 ```
 expo start
 ```
