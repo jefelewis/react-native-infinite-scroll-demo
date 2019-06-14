@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Infinite Scroll",
-    "slug": "reactNativeInfiniteScroll",
+    "name": "React Native Infinite Scroll",
+    "slug": "react-native-infinite-scroll",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [

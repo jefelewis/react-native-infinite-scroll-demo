@@ -29,57 +29,6 @@ export default class InfiniteScroll extends React.Component {
     };
   }
 
-  // Component Will Mount (Initial Query????????)
-  componentWillMount = () => {
-    try {
-      console.log('Retrieving Data');
-
-      // Set State: Loading
-      this.setState({ loading: true });
-
-      // Cloud Firestore: Query
-      let initialQuery = database.collection('users')
-        // .where('first_name', '==', `${this.props.item_name}`)
-        .orderBy('first_name')
-        // .limit(this.state.limit)
-        .limit(3)
-
-      // Cloud Firestore: Query Snapshot
-      let documentSnapshots = initialQuery.get();
-      // console.log(`Document Snapshot: ${documentSnapshots.exists()}`)
-
-      // Cloud Firestore: Document Data
-      let documentData = documentSnapshots.docs.map(document => document.data());
-      // console.log('Document Data');
-      // console.log(documentData);
-
-      // Cloud Firestore: Last Visible Document (To Start From For Proceeding Queries)
-      let lastVisible = documentData[documentData.length - 1];
-      console.log('Last Visible');
-      console.log(typeof lastVisible);
-      console.log(lastVisible);
-
-      // Set State
-      this.setState({
-        data: documentData,
-        lastVisible: lastVisible,
-        visibles: [...this.state.visibles, lastVisible],
-        loading: false,
-        refreshing: false,
-      });
-
-
-
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
-
-
-
-
-
   // Component Did Update
   // componentDidUpdate(prevProps, prevState) {
   //   const isDifferentPage = this.state.currentPage !== prevState.currentPage
@@ -103,12 +52,12 @@ export default class InfiniteScroll extends React.Component {
 
       // Cloud Firestore: Query Snapshot
       let documentSnapshots = await initialQuery.get();
-      // console.log(`Document Snapshot: ${documentSnapshots.exists()}`)
+      console.log(`Document Snapshot: ${documentSnapshots.exists()}`)
 
       // Cloud Firestore: Document Data
       let documentData = documentSnapshots.docs.map(document => document.data());
-      // console.log('Document Data');
-      // console.log(documentData);
+      console.log('Document Data');
+      console.log(documentData);
 
       // Cloud Firestore: Last Visible Document (To Start From For Proceeding Queries)
       let lastVisible = documentData[documentData.length - 1];
@@ -209,7 +158,6 @@ export default class InfiniteScroll extends React.Component {
           onEndReached={() => {
             if (this.state.loading === false) {
               // this.retrieveMore();
-
               // Change Back And Uncomment the Following Line!!!!
               this.retrieveData();
             }
@@ -218,6 +166,7 @@ export default class InfiniteScroll extends React.Component {
         /> */}
 
         <Text>Hi</Text>
+        {this.retrieveData()}
 
         {/* <ItemSelector title="Fuck" />
         <ItemSelector title="This" />

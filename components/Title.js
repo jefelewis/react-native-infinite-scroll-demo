@@ -1,3 +1,4 @@
+
 // Imports: Dependencies
 import React, { Component } from "react";
 import { Dimensions, View, SafeAreaView, StyleSheet, Text } from 'react-native';
