@@ -29,6 +29,17 @@ export default class InfiniteScroll extends React.Component {
     };
   }
 
+  // Component Did Mount
+  componentDidMount = async () => {
+    try {
+      // Cloud Firestore: Initial Query (Infinite Scroll)
+      this.retrieveData()
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
   // Component Did Update
   // componentDidUpdate(prevProps, prevState) {
   //   const isDifferentPage = this.state.currentPage !== prevState.currentPage
@@ -45,14 +56,13 @@ export default class InfiniteScroll extends React.Component {
 
       // Cloud Firestore: Query
       let initialQuery = await database.collection('users')
-        // .where('first_name', '==', `${this.props.item_name}`)
-        .orderBy('first_name')
+        .where('id', '<=', '20')
+        .orderBy('id')
         // .limit(this.state.limit)
         .limit(3)
 
       // Cloud Firestore: Query Snapshot
       let documentSnapshots = await initialQuery.get();
-      console.log(`Document Snapshot: ${documentSnapshots.exists()}`)
 
       // Cloud Firestore: Document Data
       let documentData = documentSnapshots.docs.map(document => document.data());
@@ -166,7 +176,6 @@ export default class InfiniteScroll extends React.Component {
         /> */}
 
         <Text>Hi</Text>
-        {this.retrieveData()}
 
         {/* <ItemSelector title="Fuck" />
         <ItemSelector title="This" />
