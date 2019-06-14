@@ -19,7 +19,7 @@ export default class InfiniteScroll extends React.Component {
     super(props);
 
     this.state = {
-      data: [],
+      data: [null],
       limit: 3,
       lastVisible: null,
       visibles: null,
@@ -41,10 +41,15 @@ export default class InfiniteScroll extends React.Component {
   }
 
   // Component Did Update
-  // componentDidUpdate(prevProps, prevState) {
-  //   const isDifferentPage = this.state.currentPage !== prevState.currentPage
-  //   if (isDifferentPage) this.getItems()
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    try {
+
+    }
+    catch (error) {
+      console.log('Component Updating: Previous State');
+      console.log(prevState);
+    }
+  }
 
   // Retrieve Data
   retrieveData = async () => {
@@ -76,12 +81,21 @@ export default class InfiniteScroll extends React.Component {
 
       // Set State
       this.setState({
-        data: documentData,
+        documentData: documentData,
+        // data: [...this.state.documentData, documentData],
         lastVisible: lastVisible,
         // visibles: [...this.state.visibles, lastVisible],
         loading: false,
-        refreshing: false,
-      });      
+      });
+
+      console.log('State: Document Data');
+      console.log(this.state.documentData);
+
+      console.log('State: Last Visible');
+      console.log(this.state.lastVisible);
+
+      console.log('State: Loading');
+      console.log(this.state.loading);
     }
     catch (error) {
       console.log(error);
@@ -95,6 +109,40 @@ export default class InfiniteScroll extends React.Component {
 
       // Set State: Refreshing
       this.setState({ refreshing: true });
+
+      // Check If Last Visible Exists
+      console.log('Retrieving More Last Visible');
+      console.log(this.state.lastVisible);
+
+      // Cloud Firestore: Query (Additional Query)
+      let additionalQuery = await database.collection('users')
+        .where('id', '<=', '20')
+        .orderBy('id')
+        // .limit(this.state.limit)
+        .startAt(this.state.lastVisible)
+        .limit(3)
+
+      // Cloud Firestore: Query Snapshot
+      let documentSnapshots = await additionalQuery.get();
+
+      // Cloud Firestore: Document Data
+      let documentData = documentSnapshots.docs.map(document => document.data());
+      console.log('Document Data');
+      console.log(documentData);
+
+      // Cloud Firestore: Last Visible Document (To Start From For Proceeding Queries)
+      let lastVisible = documentData[documentData.length - 1];
+      console.log('Last Visible');
+      console.log(lastVisible);
+
+      // Set State
+      this.setState({
+        // data: documentData,
+        data: [...this.state.documentData, documentData],
+        lastVisible: lastVisible,
+        // visibles: [...this.state.visibles, lastVisible],
+        refreshing: false,
+      });
     }
     catch (error) {
       console.log(error);
@@ -117,7 +165,7 @@ export default class InfiniteScroll extends React.Component {
   renderFooter = () => {
     try {
       // Check If Loading
-      if (this.state.loading) {
+      if (this.state.loading || this.state.refreshing) {
         return (
           <View style={styles.activityIndicator}>
             <ActivityIndicator />
@@ -148,12 +196,12 @@ export default class InfiniteScroll extends React.Component {
       <SafeAreaView style={styles.container}>
         <FlatList
           // Data takes in an array
-          data={this.state.data}
+          data={this.state.documentData}
           // Render Items
           renderItem={({ item }) => (
             <ItemSelector
               item={item.first_name}
-              onPress={() => {this.selectItem(item)}}
+              // onPress={() => {this.selectItem(item)}}
             />
           )}
           // Element Key
@@ -163,18 +211,14 @@ export default class InfiniteScroll extends React.Component {
           // Footer (Activity Indicator)
           ListFooterComponent={this.renderFooter}
           // On End Reached takes in a function
-          onEndReached={() => {
-            if (this.state.loading === false) {
-              // this.retrieveMore();
-              // Change Back And Uncomment the Following Line!!!!
-              this.retrieveData();
-            }
-          }}
+          onEndReached={this.retrieveMore}
           // How Close To The End Of List Until Next Data Request Is Made
           onEndReachedThreshold={0}
+          // Refreshing (Set To True When End Reached)
+          refreshing={this.state.refreshing}
         />
 
-        <Text>Hi</Text>
+        {/* <Text>Hi</Text> */}
 
         {/* <ItemSelector title="Fuck" />
         <ItemSelector title="This" />
@@ -191,7 +235,7 @@ export default class InfiniteScroll extends React.Component {
 // Styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
     height: height,
