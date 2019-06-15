@@ -1,9 +1,6 @@
 // Imports: Dependencies
 import React, { Component } from "react";
 import { ActivityIndicator, Dimensions, FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import * as firebase from 'firebase';
-import 'firebase/firestore';
-import firebaseConfig from '../config/config';
 import { database } from '../App';
 
 // Imports: Components
@@ -19,11 +16,9 @@ export default class InfiniteScroll extends React.Component {
     super(props);
 
     this.state = {
-      data: [null],
+      documentData: [],
       limit: 9,
       lastVisible: null,
-      visibles: null,
-
       loading: false,
       refreshing: false,
     };
@@ -85,9 +80,8 @@ export default class InfiniteScroll extends React.Component {
       // Set State
       this.setState({
         documentData: documentData,
-        // data: [...this.state.documentData, documentData],
+        // documentData: [...this.state.documentData, documentData],
         lastVisible: lastVisible,
-        // visibles: [...this.state.visibles, lastVisible],
         loading: false,
       });
 
@@ -141,9 +135,8 @@ export default class InfiniteScroll extends React.Component {
       // Set State
       this.setState({
         // data: documentData,
-        data: [...this.state.documentData, documentData],
+        documentData: [...this.state.documentData, documentData],
         lastVisible: lastVisible,
-        // visibles: [...this.state.visibles, lastVisible],
         refreshing: false,
       });
     }
