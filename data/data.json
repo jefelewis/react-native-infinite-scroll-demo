@@ -1,102 +1,102 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "first_name": "Kristin",
       "last_name": "Smith"
     },
     {
-      "id": "2",
+      "id": 2,
       "first_name": "Olivia",
       "last_name": "Parker"
     },
     {
-      "id": "3",
+      "id": 3,
       "first_name": "Jimmy",
       "last_name": "Robinson"
     },
     {
-      "id": "4",
+      "id": 4,
       "first_name": "Zack",
       "last_name": "Carter"
     },
     {
-      "id": "5",
+      "id": 5,
       "first_name": "Brad",
       "last_name": "Rayburn"
     },
     {
-      "id": "6",
+      "id": 6,
       "first_name": "Krista",
       "last_name": "Foster"
     },
     {
-      "id": "7",
+      "id": 7,
       "first_name": "Parker",
       "last_name": "Trotter"
     },
     {
-      "id": "8",
+      "id": 8,
       "first_name": "Kevin",
       "last_name": "Carter"
     },
     {
-      "id": "9",
+      "id": 9,
       "first_name": "Fred",
       "last_name": "Klein"
     },
     {
-      "id": "10",
+      "id": 10,
       "first_name": "Thomas",
       "last_name": "Manchin"
     },
     {
-      "id": "11",
+      "id": 11,
       "first_name": "Taylor",
       "last_name": "Welch"
     },
     {
-      "id": "12",
+      "id": 12,
       "first_name": "Sam",
       "last_name": "Goldberg"
     },
     {
-      "id": "13",
+      "id": 13,
       "first_name": "John",
       "last_name": "Russell"
     },
     {
-      "id": "14",
+      "id": 14,
       "first_name": "Steve",
       "last_name": "Bell"
     },
     {
-      "id": "15",
+      "id": 15,
       "first_name": "Kelly",
       "last_name": "Black"
     },
     {
-      "id": "16",
+      "id": 16,
       "first_name": "Lena",
       "last_name": "Hunt"
     },
     {
-      "id": "17",
+      "id": 17,
       "first_name": "Jessica",
       "last_name": "Moore"
     },
     {
-      "id": "18",
+      "id": 18,
       "first_name": "Pete",
       "last_name": "Wong"
     },
     {
-      "id": "19",
+      "id": 19,
       "first_name": "Harry",
       "last_name": "Fordham"
     },
     {
-      "id": "20",
+      "id": 20,
       "first_name": "Ashley",
       "last_name": "Blake"
     }
