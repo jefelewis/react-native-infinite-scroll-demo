@@ -35,20 +35,6 @@ export default class InfiniteScroll extends React.Component {
     }
   }
 
-  // Component Did Update
-  componentDidUpdate(prevProps, prevState) {
-    try {
-      console.log('Component Updating: Previous State');
-      console.log(prevState);
-
-      console.log('Component Updating: Previous Props');
-      console.log(prevProps);
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
-
   // Retrieve Data
   retrieveData = async () => {
     try {
@@ -192,7 +178,7 @@ export default class InfiniteScroll extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <FlatList
-          // Data takes in an array
+          // Data 
           data={this.state.documentData}
           // Render Items
           renderItem={({ item }) => (
@@ -214,16 +200,6 @@ export default class InfiniteScroll extends React.Component {
           // Refreshing (Set To True When End Reached)
           refreshing={this.state.refreshing}
         />
-
-        {/* <Text>Hi</Text> */}
-
-        {/* <ItemSelector title="Fuck" />
-        <ItemSelector title="This" />
-        <ItemSelector title="Shit" />
-        <ItemSelector title="Think" />
-        <ItemSelector title="About" />
-        <ItemSelector title="The" />
-        <ItemSelector title="Money" /> */}
       </SafeAreaView>
     )
   }
