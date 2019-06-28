@@ -9,8 +9,6 @@
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Programming Language
 * [React Native](https://facebook.github.io/react-native/) - Mobile (iOS/Android) Framework
 * [Expo](https://expo.io) - React Native Toolchain
-* [React Navigation 3](https://reactnavigation.org) - Routing/Navigation
-* [React Redux](https://react-redux.js.org) - State Management
 * [Firebase](https://firebase.google.com) - Database
 
 ## Pending Items
