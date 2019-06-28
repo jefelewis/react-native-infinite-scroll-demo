@@ -17,7 +17,7 @@ export default class ItemSelector extends Component {
       <TouchableOpacity onPress={this.props.onPress}>
         <View style={styles.container}>
           <Icon name="ios-arrow-forward" size={22} style={styles.arrowForward}/>
-          <Text style={styles.titleText}>{this.props.item}</Text>
+          <Text style={styles.titleText}>{this.props.item.first_name} {this.props.item.last_name}</Text>
         </View>
     </TouchableOpacity>
     )
