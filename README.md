@@ -1,4 +1,4 @@
-# Boilerplate: React Native Infinite Scroll
+# React Native Infinite Scroll Demo
 *  [Built With](#built-with)
 *  [Pending Items](#pending-items)
 *  [Color Scheme](#color-scheme)
